@@ -24,16 +24,25 @@ app.set("layout", "./layouts/layout") // not at views root
 app.use(static)
 // Index route
 app.get("/", function (req, res) {
-  res.render("index", {title: "Homes"})
+  res.render("index", {title: "Homest"})
 })
 
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
  *************************/
-const port = process.env.PORT || 5500
+/*const port = process.env.PORT
+const host = process.env.HOST
+
+/* ***********************
+ * Log statement to confirm server operation
+ *************************/
+/*app.listen(port, () => {
+  console.log(`app listening on ${host}:${port}`)
+})
+  */
+  const port = process.env.PORT || 5500
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
 })
-

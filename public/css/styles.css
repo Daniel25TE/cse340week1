@@ -4,3 +4,252 @@
 *:after {
   box-sizing: border-box;
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+#top-header a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.siteName {
+  flex-shrink: 0;
+}
+#tools {
+  flex-shrink: 0;
+}
+nav {
+  background-color: #000;
+  width: 100%;
+}
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0;
+}
+nav li {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.hero-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  max-width: 220px;
+  padding: 0;
+  background: rgba(226, 224, 224, 0.6);
+  color: white;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+button {
+  padding: 0;
+}
+.image-wrapper button img {
+  width: 80px;
+  height: auto;
+}
+h1 {
+  font-size: 1.3rem;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+h2 {
+  font-size: 1.1rem;
+  padding: 0;
+  margin: 0;
+  color: rgb(0, 96, 109);
+}
+.hero-features {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1rem 0;
+}
+.hero-features li {
+  font-size: .8rem;
+  font-weight: 500;
+  color:#000
+}
+.info-section {
+  margin-top: 2rem;
+}
+.info-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  gap: 0;
+  padding: 0;
+}
+.info-left {
+  margin: 2px;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: left;
+  column-gap: .5rem;
+  row-gap: .1rem;
+  margin-top: 1rem;
+}
+.info-item {
+  text-align: center;
+}
+.info-item img {
+  background-color: rgb(0, 115, 160);
+  padding: 1rem;
+  width: 150px;
+  height: 80px;
+  object-fit: contain;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid rgba(0, 0, 0, 0.623);
+}
+.info-item p {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  border-bottom: 1px solid #0077cc;
+  padding-bottom: 0;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.info-right {
+  margin: 2px;
+}
+.info-right .info-list {
+  padding-left: 1rem;
+  margin-left: 0;
+}
+.info-right .info-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+@media (min-width: 900px) {
+  html,
+  body {
+    background-image: url('/images/site/checkerboard.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  #wrapper {
+    background-color: white;
+    padding: 5rem;
+    max-width: 100%;
+    margin: 1rem 5rem;
+  }
+  .info-container {
+    flex-direction: row;
+  }
+  .info-left,
+  .info-right {
+    flex: 1;
+  }
+  #top-header .siteName a {
+    font-size: 2.5rem;
+  }
+  #top-header {
+    padding: 0.5rem .5rem;
+    margin: 1rem 0;
+    border: none;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin: 1.5rem 0;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  #wrapper {
+    background-color: rgb(255, 255, 255);
+    margin: 1rem 6rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 4px solid rgba(1, 138, 180, 0.623);
+  }
+  .hero-overlay {
+    top: 50px;
+    left: 70px;
+    max-width: 500px;
+  }
+  button {
+    margin-top: 1.5rem;
+  }
+  .image-wrapper button img {
+    width: 200px;
+    height: auto;
+  }
+  h2 {
+    font-size: 1.7rem;
+  }
+  .hero-title {
+    font-size: 2.3rem;
+  }
+  .hero-features li {
+    padding: 0;
+    margin: 0;
+    color: rgb(0, 89, 100);
+    font-size: 1.7rem;
+  }
+  .image-wrapper img {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .info-title {
+    margin-bottom: 2.5rem;
+  }
+  .info-grid {
+    justify-content: center;
+  }
+  .info-item img {
+    width: 290px;
+    height: 120px;
+  }
+  .info-list li {
+    font-size: 1.3rem;
+    padding-bottom: 1rem;
+  }
+}
+@media (min-width: 576px) and (max-width: 1149px) {
+  .info-item img {
+    width: 200px;
+    height: 90px;
+  }
+}
