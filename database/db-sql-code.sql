@@ -228,3 +228,15 @@ VALUES (
         'White',
         5
     );
+--Task4, here I changed small interiors for a huge interior
+UPDATE inventory
+SET inv_description = REPLACE(
+        inv_description,
+        'small interiors',
+        'a huge interior'
+    )
+WHERE inv_id = 10;
+--Task6, here I changed the path of the images to include 'vehicles'
+UPDATE inventory
+SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+    inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
