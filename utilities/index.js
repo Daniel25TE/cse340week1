@@ -7,21 +7,14 @@ Util.buildClassificationGrid = async function(data){
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => { 
       grid += '<li>'
-      grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
-      + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-      + 'details"><img src="' + vehicle.inv_thumbnail 
-      +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-      +' on CSE Motors" /></a>'
-      grid += '<div class="namePrice">'
-      grid += '<hr />'
-      grid += '<h2>'
-      grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
-      + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
-      + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
-      grid += '</h2>'
-      grid += '<span>$' 
-      + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
-      grid += '</div>'
+      grid += `<a href="../../inv/detail/${vehicle.inv_id}" title="View ${vehicle.inv_make} ${vehicle.inv_model} details" class="card-link">`;
+      grid += `<img src="${vehicle.inv_thumbnail}" alt="${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors">`;
+      grid += `<div class="namePrice">`;
+      grid += `<hr>`;
+      grid += `<h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>`;
+      grid += `<span>$${new Intl.NumberFormat('en-US').format(vehicle.inv_price)}</span>`;
+      grid += `</div>`;
+      grid += `</a>`;
       grid += '</li>'
     })
     grid += '</ul>'
@@ -33,7 +26,7 @@ Util.buildClassificationGrid = async function(data){
 
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
-  let list = "<ul>"
+  let list = '<ul class="main-nav">'
   list += '<li><a href="/" title="Home page">Home</a></li>'
   data.rows.forEach((row) => {
     list += "<li>"
@@ -50,6 +43,21 @@ Util.getNav = async function (req, res, next) {
   list += "</ul>"
   return list
 }
+
+Util.buildDetailView = async function(vehicle) {
+  let html = `<div class="vehicle-detail">
+    <img src="${vehicle.inv_image}" alt=" This is a ${vehicle.inv_make} ${vehicle.inv_model}">
+    <div class="vehicle-info">
+      <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>
+      <p class="price">Price: $${new Intl.NumberFormat('en-US').format(vehicle.inv_price)}</p>
+      <p><strong>Description:</strong> ${vehicle.inv_description}</p>
+      <p><strong>Color:</strong> ${vehicle.inv_color}</p>
+      <p><strong>Miles:</strong> ${new Intl.NumberFormat('en-US').format(vehicle.inv_miles)} miles</p>
+    </div>
+  </div>`
+  return html
+}
+
 
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 

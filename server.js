@@ -27,6 +27,8 @@ app.set("layout", "./layouts/layout") // not at views root
 app.use(static)
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
+app.get("/show-error", utilities.handleErrors(baseController.showError))
+//app.get("/favicon.ico", (req, res) => res.status(204).end())
 app.use("/inv", inventoryRoute)
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
