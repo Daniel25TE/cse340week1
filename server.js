@@ -15,10 +15,11 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities")
 const session = require("express-session")
 const pool = require('./database/')
-
-
+const accountRoute = require("./routes/accountRoute")
+const bodyParser = require("body-parser")
 
 /* Middleware*/
+
 app.use(session({
  store: new (require('connect-pg-simple')(session))({
    createTableIfMissing: true,
@@ -35,6 +36,8 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 /* ***********************
  * View Engine Templates
@@ -52,6 +55,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.get("/show-error", utilities.handleErrors(baseController.showError))
 //app.get("/favicon.ico", (req, res) => res.status(204).end())
 app.use("/inv", inventoryRoute)
+app.use("/account", accountRoute)
+
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })

@@ -1,0 +1,37 @@
+<title>
+    <%= title %>
+</title>
+<h1>
+    <%= title %>
+</h1>
+<% if (message) { %>
+
+    <%- messages() %>
+
+        <% } %>
+
+    <form action="/account/register" method="post">
+        
+        <label for="account_firstname">First Name:
+            <input type="text" id="account_firstname" name="account_firstname" required>
+        </label>
+
+        <label for="account_lastname">Last Name:
+            <input type="text" id="account_lastname" name="account_lastname" required>
+        </label>
+
+        <label for="account_email">Email:
+            <input type="email" id="account_email" name="account_email" required>
+        </label>
+    
+        <label for="account_password">Password:
+            <input type="password" id="account_password" name="account_password" required 
+            minlength="12"
+            pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{12,}$"
+            title="Password must be at least 12 characters, include at least one capital letter, at least one number, and at least one special character.">
+            <button type="button" id="togglePassword">Show</button>
+        </label>
+        
+        <button type="submit">Register</button>
+    </form>
+    <script src="/js/show-logic.js"></script>

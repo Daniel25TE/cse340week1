@@ -1,0 +1,26 @@
+<title>
+    <%= title %>
+</title>
+<h1>
+    <%= title %>
+</h1>
+<% if (message) { %>
+    
+        <%- messages() %>
+    
+    <% } %>
+
+    <form action="/account/login" method="get">
+
+        <label for="account_email">Email:
+        <input type="email" id="account_email" name="account_email" required>
+        </label>
+
+        <label for="account_password">Password:
+        <input type="password" id="account_password" name="account_password" required>
+        </label>
+
+        <button type="submit">Login</button>
+    </form>
+    
+    <p class="register-link">Don't have an account? <a href="/account/register">Register here</a></p>
