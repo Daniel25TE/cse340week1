@@ -1,14 +1,20 @@
-<title>
-    <%= title %>
-</title>
-<h1>
-    <%= title %>
-</h1>
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
 <% if (message) { %>
-
-    <%- messages() %>
-
-        <% } %>
+<%- messages() %>
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error=> { %>
+         <li>
+            <%= error.msg %>
+          </li>
+       <% }) %>
+        </ul>
+    <% } %>
+<% } %>
 
     <form action="/account/register" method="post">
         
@@ -24,13 +30,21 @@
             <input type="email" id="account_email" name="account_email" required>
         </label>
     
-        <label for="account_password">Password:
-            <input type="password" id="account_password" name="account_password" required 
-            minlength="12"
+        <label for="account_password">Password:</label>
+        <input type="password" id="account_password" name="account_password" required minlength="12"
             pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{12,}$"
             title="Password must be at least 12 characters, include at least one capital letter, at least one number, and at least one special character.">
-            <button type="button" id="togglePassword">Show</button>
-        </label>
+        <button type="button" id="togglePassword">Show</button>
+        
+        <div class="password-hint">
+            Password must be at least 12 characters and include:
+            <ul>
+                <li>1 uppercase letter</li>
+                <li>1 lowercase letter</li>
+                <li>1 number</li>
+                <li>1 special character</li>
+            </ul>
+        </div>
         
         <button type="submit">Register</button>
     </form>
