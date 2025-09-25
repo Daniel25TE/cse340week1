@@ -269,7 +269,7 @@ label {
   display: flex;
   flex-direction: column;
 }
-input {
+input, textarea, .classification_select {
   padding: 0.75rem;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -326,6 +326,40 @@ button:hover {
 
 .password-hint li {
   margin-bottom: 0.25rem;
+}
+
+.inventory-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem;
+
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #003e80;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #023b5c;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #495057;
 }
 @media (min-width: 914px) {
   html,

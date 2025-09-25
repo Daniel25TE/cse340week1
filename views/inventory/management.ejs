@@ -1,0 +1,24 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+<% } else 
+    { res.redirect('/') } %>
+<% if (message) { %>
+    
+<%- messages() %>
+    <% if (errors) { %>
+        <ul class="notice">
+        <% errors.array().forEach(error=> { %>
+            <li>
+                <%= error.msg %>
+            </li>
+            <% }) %>
+        </ul>
+    <% } %>
+<% } %>
+
+<div class="inventory-links">
+    <a class="btn btn-primary" href="/inv/add-classification">Add New Classification</a>
+    <a class="btn btn-secondary" href="/inv/add-inventory">Add New Inventory Item</a>
+</div>
