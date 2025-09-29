@@ -268,6 +268,7 @@ label {
   font-size: 0.95rem;
   display: flex;
   flex-direction: column;
+  margin: 0 10px;
 }
 input, textarea, .classification_select {
   padding: 0.75rem;
@@ -360,6 +361,68 @@ button:hover {
 
 .btn-secondary:hover {
   background-color: #495057;
+}
+
+#inventoryDisplay {
+  width: 99%;
+  border-collapse: collapse;
+  margin: 1rem 2px;
+  font-size: 0.9rem;
+}
+
+#inventoryDisplay thead {
+  display: none;
+}
+
+#inventoryDisplay tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  gap: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.5rem;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#inventoryDisplay td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0;
+  border: none;
+}
+
+#inventoryDisplay td:first-child {
+  grid-column: 1 / -1;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#inventoryDisplay td:nth-child(2),
+#inventoryDisplay td:nth-child(3) {
+  justify-content: center;
+}
+
+#inventoryDisplay td:nth-child(2) a,
+#inventoryDisplay td:nth-child(3) a {
+  margin: 0 5px;
+}
+
+#inventoryDisplay a {
+  color: #fff;
+  background: #2476ad;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+#inventoryDisplay a:hover {
+  background: #127a88;
 }
 @media (min-width: 914px) {
   html,
@@ -462,6 +525,36 @@ button:hover {
   .vehicle-info {
     flex: 1;
   }
+  #inventoryDisplay thead {
+    background: #2c3e50;
+    color: #fff;
+  }
+
+  #inventoryDisplay tr {
+    display: table-row;
+    gap: 0;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  #inventoryDisplay td {
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  #inventoryDisplay td:first-child {
+    grid-column: auto;
+    font-weight: normal;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  #inventoryDisplay td:nth-child(2),
+  #inventoryDisplay td:nth-child(3) {
+    text-align: center;}
 }
 @media (min-width: 576px) and (max-width: 1149px) {
   .info-item img {
