@@ -112,4 +112,47 @@ validate.checkInventoryData = async (req, res, next) => {
   next()
 }
 
+validate.checkUpdateData = async (req, res, next) => {
+  const errors = validationResult(req)
+
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    
+    const body = req.body || {}
+    const classification_id = body.classification_id || ""
+    const inv_make = body.inv_make || ""
+    const inv_model = body.inv_model || ""
+    const inv_description = body.inv_description || ""
+    const inv_image = body.inv_image || "/images/no-image-available.png"
+    const inv_thumbnail = body.inv_thumbnail || "/images/no-image-available.png"
+    const inv_price = body.inv_price || ""
+    const inv_year = body.inv_year || ""
+    const inv_miles = body.inv_miles || ""
+    const inv_color = body.inv_color || ""
+    const inv_id = body.inv_id || ""
+
+    const classificationList = await utilities.buildClassificationList(classification_id)
+
+    return res.render("inventory/edit-inventory", {
+      errors,
+      title: `Edit ${inv_make} ${inv_model}`,
+      nav,
+      classificationList,
+      classification_id,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+      inv_id
+    })
+  }
+
+  next()
+}
+
 module.exports = validate
