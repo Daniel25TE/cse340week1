@@ -18,6 +18,7 @@ const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const favoriteRoute = require("./routes/favoriteRoute")
 
 /* Middleware*/
 
@@ -59,10 +60,12 @@ app.get("/show-error", utilities.handleErrors(baseController.showError))
 //app.get("/favicon.ico", (req, res) => res.status(204).end())
 app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)
+app.use("/favorites", favoriteRoute)
 
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
+
 
 /* ***********************
 * Express Error Handler

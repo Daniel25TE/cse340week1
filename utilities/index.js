@@ -56,7 +56,11 @@ Util.buildDetailView = async function(vehicle) {
       <p><strong>Color:</strong> ${vehicle.inv_color}</p>
       <p><strong>Miles:</strong> ${new Intl.NumberFormat('en-US').format(vehicle.inv_miles)} miles</p>
     </div>
-  </div>`
+  </div>
+  <form action="/favorites/add/${vehicle.inv_id}" method="POST" class="favorite-form">
+      <button type="submit" class="favorite-btn">❤️ Add to Favorites</button>
+  </form>
+  `
   return html
 }
 

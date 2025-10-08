@@ -240,3 +240,15 @@ WHERE inv_id = 10;
 UPDATE inventory
 SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
     inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
+--Table for favorites logic.
+CREATE TABLE IF NOT EXISTS public.favorites (
+    fav_id SERIAL PRIMARY KEY,
+    account_id INTEGER NOT NULL,
+    inv_id INTEGER NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    CONSTRAINT favorites_unique UNIQUE (account_id, inv_id),
+    CONSTRAINT fk_favorites_account FOREIGN KEY (account_id) REFERENCES public.account (account_id) ON DELETE CASCADE,
+    CONSTRAINT fk_favorites_inv FOREIGN KEY (inv_id) REFERENCES public.inventory (inv_id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS idx_favorites_account ON public.favorites (account_id);
+CREATE INDEX IF NOT EXISTS idx_favorites_inv ON public.favorites (inv_id);
