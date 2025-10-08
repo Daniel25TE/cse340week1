@@ -463,6 +463,12 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+.favorite-checkbox {
+  transform: scale(1.5);
+  margin-left: 2px;
+}
+
+
 @media (min-width: 914px) {
   html,
   body {
